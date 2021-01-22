@@ -95,7 +95,6 @@ public class ViewPager: NSObject {
         setupTabContainerView()
         setupPageViewController()
         setupTabAndIndicator()
-        scrollToItem(scrollPosition: 4, animation: true)
     }
     
      public func scrollToItem(scrollPosition: Int, animation: Bool) {
