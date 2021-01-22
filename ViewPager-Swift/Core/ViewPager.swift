@@ -97,6 +97,57 @@ public class ViewPager: NSObject {
         setupTabAndIndicator()
     }
     
+     public func scrollToItem(currentIndex: Int, animation: Bool) {
+            if(currentIndex < 0 || currentIndex >= tabsViewList.count){
+                return
+            }
+            
+            let activeTab = tabsViewList[currentIndex]
+            let activeFrame = activeTab.frame
+            if(animation){
+                UIView.animate(withDuration: 0.5) {
+                    self.tabContainer.scrollRectToVisible(activeFrame, animated: false)
+                    self.tabContainer.layoutIfNeeded()
+                }
+            }
+            
+            
+    //        // Setup Tab Highlight
+    //        if options.isTabHighlightAvailable {
+    //
+    //            self.tabsViewList[previousIndex].removeHighlight(options: self.options)
+    //
+    //            UIView.animate(withDuration: 0.4, animations: {
+    //                self.tabsViewList[currentIndex].addHighlight(options: self.options)
+    //            })
+    //        }
+    //
+    //        if options.isTabIndicatorAvailable {
+    //
+    //            // Deactivate previous contstraint
+    //            tabIndicatorLeadingConstraint?.isActive = false
+    //            tabIndicatorWidthConstraint?.isActive = false
+    //
+    //            // Create new ones to activate within animation block
+    //            tabIndicatorLeadingConstraint = tabIndicator.leadingAnchor.constraint(equalTo: activeTab.leadingAnchor)
+    //            tabIndicatorWidthConstraint = tabIndicator.widthAnchor.constraint(equalTo: activeTab.widthAnchor)
+    //
+    //            self.view.layoutIfNeeded()
+    //            UIView.animate(withDuration: 0.5) {
+    //
+    //                self.tabIndicatorWidthConstraint?.isActive = true
+    //                self.tabIndicatorLeadingConstraint?.isActive = true
+    //
+    //                self.tabContainer.scrollRectToVisible(activeFrame, animated: false)
+    //                self.tabContainer.layoutIfNeeded()
+    //            }
+    //
+    //            return
+    //        }
+    //
+    //        self.tabContainer.scrollRectToVisible(activeFrame, animated: true)
+    }
+    
     // MARK:- Private Helpers
     
     fileprivate func setupTabContainerView() {
